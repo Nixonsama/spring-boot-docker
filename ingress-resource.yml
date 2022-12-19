@@ -4,14 +4,14 @@ metadata:
   name: ingress-resource-1
 spec:
   rules:
-  - host: apps.landmarktech.info
+  - host: springapp.samanixonn.click
     http:
       paths:
       # Default Path(/)
       - backend:
           serviceName: springapp
           servicePort: 80
-      - path: /java-web-app
-        backend:
-          serviceName: javawebappservice
-          servicePort: 80
+     # - path: /java-web-app
+      #  backend:
+       #   serviceName: javawebappservice
+        #  servicePort: 80

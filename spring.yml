@@ -1,0 +1,90 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-boot
+  namespace: dev
+  labels:
+    app: springapp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: springapp
+  template:
+    metadata:
+      labels:
+        app: springapp
+    spec:
+      containers:
+      - name: spring-boot
+        image: nsama123/spring-boot-mongo:1
+        ports: 8080
+        - containerPort: 8080
+        env:
+        - name: MONGO_DB_USERNAME
+          value: ZGV2ZGI=    
+        - name: MONGO_DB_PASSWORDD   
+          value: ZGV2ZGJAMTIz 
+        - name: MONGO_DB_HOSTNAME
+          value: mongo
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: springappsvc
+  namespace: dev
+spec:
+  type: NodePort
+  selector:
+    app: springapp
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      nodePort: 31000
+---
+apiVersion: apps/v1 
+kind: ReplicaSet
+metadata:
+  namespace: dev
+  name: mongo  
+spec:
+  selector:
+    matchLabels:
+      app: db  
+  template:
+    metadata:
+      name: mongo   
+      labels:
+        app: db   
+    spec:
+      volumes:
+      - name: hostpathvol  
+        hostPath:
+          path: /tmp/mydata 
+      containers:
+      - name: mongdb   
+        image: mongo    
+        ports:
+        - containerPort: 27017    
+        env:
+        - name: MONGO_INITDB_ROOT_USERNAME
+          value: ZGV2ZGI=    
+        - name: MONGO_INITDB_ROOT_PASSWORD   
+          value: ZGV2ZGJAMTIz 
+        volumeMounts:
+        - name: hostpathvol
+          mountPath: /data/db
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: dev
+  name: mongo
+spec:
+  type: ClusterIP
+  selector:
+    app: db
+  ports:
+  - port: 27017
+    targetPort: 27017

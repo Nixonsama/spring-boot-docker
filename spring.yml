@@ -18,7 +18,7 @@ spec:
       containers:
       - name: spring-boot
         image: nsama123/spring-boot-mongo:1
-        ports: 8080
+        ports:
         - containerPort: 8080
         env:
         - name: MONGO_DB_USERNAME

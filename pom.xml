@@ -18,7 +18,7 @@
 		<spring-boot.version>2.1.5.RELEASE</spring-boot.version>
 		<spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
 		<logstash-logback-encoder.version>6.1</logstash-logback-encoder.version>
-		<sonar.host.url>http://18.209.70.68:2000/</sonar.host.url>
+		<sonar.host.url>http://3.87.102.85:2000/</sonar.host.url>
 		<sonar.login>admin</sonar.login>
 		<sonar.password>admin123</sonar.password>
 	</properties>
@@ -79,6 +79,20 @@
 			<artifactId>logstash-logback-encoder</artifactId>
 			<version>${logstash-logback-encoder.version}</version>
 		</dependency>
+		<distributionManagement>
+	    <repository>
+	      <id>nexus</id>
+	      <name>Landmark Technologies Releases Nexus Repository</name>
+	      <url>http://3.87.102.85:5001/repository/springboot-release/</url>
+	    </repository>
+	    
+	    <snapshotRepository>
+	      <id>nexus</id>
+	      <name>Landmark Technologies Snapshot Nexus Repository </name>
+	      <url>http://3.87.102.85:5001/repository/springboot-snapshot/</url>
+	    </snapshotRepository>
+	    
+	</distributionManagement>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

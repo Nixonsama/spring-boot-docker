@@ -47,20 +47,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-mongodb</artifactId>
 		</dependency>
-	   <distributionManagement>
-	      <repository>
-	        <id>nexus</id>
-	        <name>Landmark Technologies Releases Nexus Repository</name>
-	        <url>http://3.87.102.85:5001/repository/springboot-release/</url>
-	      </repository>
-	    
-	        <snapshotRepository>
-	        <id>nexus</id>
-	        <name>Landmark Technologies Snapshot Nexus Repository </name>
-	        <url>http://3.87.102.85:5001/repository/springboot-snapshot/</url>
-	      </snapshotRepository>
-	    
-	    </distributionManagement>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
